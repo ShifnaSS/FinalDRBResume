@@ -102,20 +102,25 @@ app.post("/api/addimage",verifyToken,upload.single('file'),function(req,res){
     const img_file = req.file.filename
     res.status(200).send({img_file});
 })
-app.delete("/api/deleteprofile:id",verifyToken,(req,res)=>{
+app.delete("/api/deleteprofile/:id",verifyToken,(req,res)=>{
     console.log("entered for deleting")
     id = req.params.id;
     user_data.findByIdAndDelete({"_id":id})
     .then(()=>{
         console.log('success')
         let a ="User deleted the profile"
-    var newelement = {
+        var newelement = {
         user_id : id,
         activity: a
-    }
+        }
     var newactivity = new not_data(newelement);
     newactivity.save();
         res.send();
+        
+    })
+    .catch((err)=>
+    {
+        console.log(err)
     })
     
 })
@@ -216,7 +221,7 @@ app.post("/api/adduser",verifyToken,function(req,res){
     newactivity.save();
 })
 
-app.get('/api/getuser:id',verifyToken, (req, res) => {
+app.get('/api/getuser/:id',verifyToken, (req, res) => {
   
     const id = req.params.id;
     console.log(id)
@@ -225,7 +230,7 @@ app.get('/api/getuser:id',verifyToken, (req, res) => {
           res.send(user_data);
       });
   })
-  app.get('/api/getsignup:id',verifyToken, (req, res) => {
+  app.get('/api/getsignup/:id',verifyToken, (req, res) => {
   
     const id = req.params.id;
     console.log(id)
@@ -243,7 +248,7 @@ app.get('/api/getuser:id',verifyToken, (req, res) => {
         res.send(users);
     });
   });
-  app.get('/api/checkpro:userid',verifyToken, (req, res) => {
+  app.get('/api/checkpro/:userid',verifyToken, (req, res) => {
   
     const id = req.params.userid;
     console.log(id)
