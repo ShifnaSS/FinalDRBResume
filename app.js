@@ -228,7 +228,10 @@ app.get('/api/getuser/:id',verifyToken, (req, res) => {
     user_data.findOne({"userid":id})
       .then((user_data)=>{
           res.send(user_data);
-      });
+      })
+      .catch((err)=>{
+        console.log(err)
+    })
   })
   app.get('/api/getsignup/:id',verifyToken, (req, res) => {
   
@@ -237,7 +240,10 @@ app.get('/api/getuser/:id',verifyToken, (req, res) => {
     signup_data.findOne({"_id":id})
       .then((signup_data)=>{
           res.send(signup_data);
-      });
+      })
+      .catch((err)=>{
+        console.log(err)
+    })
   })
 
   app.get('/api/userslist',verifyToken,(req,res)=>
@@ -246,7 +252,10 @@ app.get('/api/getuser/:id',verifyToken, (req, res) => {
     .then((users)=>
     {
         res.send(users);
-    });
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
   });
   app.get('/api/checkpro/:userid',verifyToken, (req, res) => {
   
@@ -255,7 +264,10 @@ app.get('/api/getuser/:id',verifyToken, (req, res) => {
     user_data.findOne({"userid":id})
       .then((user_data)=>{
           res.send(user_data);
-      });
+      })
+      .catch((err)=>{
+          console.log(err)
+      })
   })
 
   app.get('/api/getnot',verifyToken, (req, res) => {
@@ -264,7 +276,10 @@ app.get('/api/getuser/:id',verifyToken, (req, res) => {
     .then((notifications)=>
     {
         res.send(notifications);
-    });
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
   })
 
   app.post("/api/signup",function(req,res){
