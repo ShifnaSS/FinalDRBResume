@@ -16,10 +16,12 @@ app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false}));
 app.use(express.static('./dist/frontend'));
-app.use(express.static('./dist/frontend/src/assets/images'));
+app.use(express.static('public')); 
+app.use('/images', express.static('images'));
+//  <img src="/images/{{course._id}}.jpg" alt="">
 const storage = multer.diskStorage({
     destination:(req,file,callback)=>{
-        callback(null,'./dist/frontend/src/assets/images')
+        callback(null,'public/images/')
     },
     filename:(req,file,callback)=>{
         var timestamp = new Date().getTime();
