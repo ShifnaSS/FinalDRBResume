@@ -21,7 +21,7 @@ app.use('/images', express.static('images'));
 //  <img src="/images/{{course._id}}.jpg" alt="">
 const storage = multer.diskStorage({
     destination:(req,file,callback)=>{
-        const filePath = path.join(__dirname, '/public/css/');
+        const filePath = path.join(__dirname, '/public/images/');
         console.log("filePath::",filePath)
         callback(null,filePath)
     },
