@@ -21,7 +21,7 @@ app.use('/images', express.static('images'));
 //  <img src="/images/{{course._id}}.jpg" alt="">
 const storage = multer.diskStorage({
     destination:(req,file,callback)=>{
-        callback(null,'/public/images/')
+        callback(null,__dirname+'/public/images/')
     },
     filename:(req,file,callback)=>{
         var timestamp = new Date().getTime();
@@ -314,3 +314,4 @@ app.post('/api/download',verifyToken,(req,res)=>
     res.sendFile(path.join(__dirname + '/dist/frontend/index.html'));
    });
   app.listen(port,()=>{console.log("Server Ready at" +port)});
+  console.log("__dirname ",__dirname )
