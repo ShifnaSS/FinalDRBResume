@@ -18,7 +18,7 @@ app.use(bodyparser.urlencoded({ extended: false}));
 app.use(express.static('./dist/frontend'));
 const storage = multer.diskStorage({
     destination:(req,file,callback)=>{
-        callback(null,'./dist/frontend/src/assets/images')
+        callback(null,'/src/assets/images')
     },
     filename:(req,file,callback)=>{
         var timestamp = new Date().getTime();
