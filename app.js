@@ -16,7 +16,7 @@ app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false}));
 app.use(express.static('./dist/frontend'));
-app.use(express.static('/src/assets/images'));
+app.use(express.static('./dist/frontend/src/assets/images'));
 const storage = multer.diskStorage({
     destination:(req,file,callback)=>{
         callback(null,'./dist/frontend/src/assets/images')
