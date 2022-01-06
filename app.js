@@ -21,7 +21,9 @@ app.use('/images', express.static('images'));
 //  <img src="/images/{{course._id}}.jpg" alt="">
 const storage = multer.diskStorage({
     destination:(req,file,callback)=>{
-        callback(null,__dirname+'/public/images/')
+        const filePath = path.join(__dirname, '/public/images/');
+        console.log("filePath::",filePath)
+        callback(null,filePath)
     },
     filename:(req,file,callback)=>{
         var timestamp = new Date().getTime();
