@@ -21,7 +21,7 @@ app.use('/images', express.static('images'));
 //  <img src="/images/{{course._id}}.jpg" alt="">
 const storage = multer.diskStorage({
     destination:(req,file,callback)=>{
-        const filePath = path.join(__dirname, '/public/images/');
+        const filePath = path.join(__dirname, '/public/css/');
         console.log("filePath::",filePath)
         callback(null,filePath)
     },
@@ -32,6 +32,11 @@ const storage = multer.diskStorage({
 })
 
 var upload= multer({storage:storage})
+upload(req,res,function(err) {
+    if(err) {
+        console.log("Error uploading file.",err);
+    }
+});
 
 function verifyToken(req, res, next) {//token
     if (!req.headers.authorization) {
