@@ -105,6 +105,7 @@ app.post("/api/addimage",verifyToken,upload.single('file'),function(req,res){
 app.get("/api/share/:id",(req,res)=>{
     
     var fullUrl = req.protocol + '://' + req.get('host') + '/go/' + req.params.id;
+    console.log(fullUrl)
     res.status(200).send({fullUrl});
 })
 app.delete("/api/deleteprofile/:id",verifyToken,(req,res)=>{
