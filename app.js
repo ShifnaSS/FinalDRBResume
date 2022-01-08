@@ -239,6 +239,18 @@ app.get('/api/getuser/:id',verifyToken, (req, res) => {
         console.log(err)
     })
   })
+  app.get('/api/gettempuser/:id', (req, res) => {
+  
+    const id = req.params.id;
+    console.log(id)
+    user_data.findOne({"userid":id})
+      .then((user_data)=>{
+          res.send(user_data);
+      })
+      .catch((err)=>{
+        console.log(err)
+    })
+  })
   app.get('/api/getsignup/:id',verifyToken, (req, res) => {
   
     const id = req.params.id;
