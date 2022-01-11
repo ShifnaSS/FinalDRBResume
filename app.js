@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const multer = require('multer');
-const port = process.env.PORT || 3300;
+const port = process.env.PORT || 3400;
 let jwt =require('jsonwebtoken');
 require("dotenv").config();
 const bodyparser = require('body-parser');
